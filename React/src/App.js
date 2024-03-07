@@ -63,7 +63,7 @@ export default function App() {
         </InputGroup>
         <Container>
           <Row className="mx-2 row row-cols-6">
-            {playlists.map( (album, i) => {
+            {playlists.map((album, i) => {
               console.log(album);
               return (
                 <Card title={album.name} onClick={handleClick}>
