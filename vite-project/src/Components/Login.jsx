@@ -4,7 +4,7 @@ import {Container} from 'react-bootstrap';
 export default function Login() {
     const handleClick = () => {
         const clientId = "d2167329736c486689194fa6c967d6d1"; 
-        const redirectUrl = "http://localhost:5174/"
+        const redirectUrl = "http://localhost:5173/"
         const apiUrl = "https://accounts.spotify.com/authorize";
         const scope = [
             "user-read-email",

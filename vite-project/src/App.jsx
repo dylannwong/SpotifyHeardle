@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, InputGroup, FormControl, Button, Row, Card} from 'react-bootstrap';
 import { useState, useEffect, setState, prevState} from 'react';
 import Login from './Components/Login';
+import GameState from './Components/GameState.jsx';
 
 //const CLIENT_ID = "d2167329736c486689194fa6c967d6d1"; 
 //const CLIENT_SECRET = "64c50dfd98ad423db5ae935db07006b4";
@@ -45,6 +46,7 @@ export default function App() {
         .then(data => { setPlaylist(data.items);
         })
         //.then(data => { return data.artist.items[0].id })
+  
     }
 
       const handleClick = (id) => {
@@ -53,6 +55,7 @@ export default function App() {
         setChosen(chosenId=id)
         
          console.log(chosenId);
+
         
         
       };
@@ -65,10 +68,13 @@ export default function App() {
           
           
         <Container>
+        {(isVisible) ? null: <Card>Set Playlist</Card>}
           <Row className="mx-2 row row-cols-6">
+         
             {playlists.map((album, i) => {
               
               return (
+                
                 <Card onClick={() => handleClick(album.name)}>
                   <Card.Img src={album.images[0].url} />
                   <Card.Body>
