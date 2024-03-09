@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, InputGroup, FormControl, Button, Row, Card} from 'react-bootstrap';
@@ -13,6 +13,7 @@ export default function App() {
   const [accessToken, setAccessToken] = useState("");
   let [chosenId, setChosen] = useState("");
   const [playlists, setPlaylist] = useState([]);
+  const [isVisible, setIsVisible] = useState(true);
   
     useEffect(() => {
       const hash = window.location.hash;
@@ -25,6 +26,7 @@ export default function App() {
     }, []);
 
     async function start() {
+      setIsVisible(false);
       console.log("Getting Playlists ");
       // Get request using search to get the Artist ID
       var searchParameters = {
@@ -58,8 +60,10 @@ export default function App() {
       <div className="App">
       
        <Container>
-  
-          {accessToken? <Button onClick={start}>Start</Button> :< Login />}
+          
+          {accessToken ? isVisible && (<Button onClick={start}>Start</Button>) :< Login />}
+          
+          
         <Container>
           <Row className="mx-2 row row-cols-6">
             {playlists.map((album, i) => {
