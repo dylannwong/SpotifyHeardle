@@ -7,7 +7,8 @@ import {FaCheckCircle} from 'react-icons/fa'
 
 
 export default function GameState({Id, name, accessToken}) {
-   let [guess, setGuess] = useState(['guess 1:', 'guess 2:', 'guess 3:', 'guess 4:', 'guess 5:', 'guess 6:']);
+   let [guess, setGuess] = useState(['guess 1: ', 'guess 2: ', 'guess 3: ', 'guess 4: ', 'guess 5: ', 'guess 6: ']);
+   let [guessCount, setGuessCount] = useState(0)
    let [play, setPlay] = useState(true);
    const [answer, setAnswer] = useState("");
    const [chosenSong, setSong] = useState("vibe");
@@ -33,7 +34,7 @@ export default function GameState({Id, name, accessToken}) {
    }
 
    async function Submit() {
-      
+      //fetches tracks of playlists
       var searchParameters = {
          headers: {
            'Authorization': 'Bearer ' + accessToken
@@ -45,11 +46,14 @@ export default function GameState({Id, name, accessToken}) {
       await fetch(`https://api.spotify.com/v1/playlists/${Id}/tracks`, searchParameters)
          .then(response => response.json())
          .then(data => setTracks(tracks = data.items))
-
+      
       console.log(tracks[0].track.name);
       setSong(tracks[0].track.name)
-
+      
       console.log(answer);
+         //keeps track of guesses and displays them.
+      guess[guessCount] = guess[guessCount] + answer;
+      setGuessCount(guessCount+1);
       if (answer == chosenSong) {
          console.log("you win!");
       } else {
