@@ -7,6 +7,12 @@ import App from "../App";
 export default function GameState({Id, name}) {
    let [guess, setGuess] = useState(['guess 1:', 'guess 2:', 'guess 3:', 'guess 4:', 'guess 5:', 'guess 6:']);
    
+   async function GetTracks() {
+      //if too hard to get token, may have to fetch tracks in App then import array from there
+
+   }
+
+
    return (
        
       <div>
