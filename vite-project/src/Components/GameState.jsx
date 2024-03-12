@@ -1,9 +1,28 @@
 import React from "react";
 import { Container, InputGroup, FormControl, Button, Row, Card} from 'react-bootstrap';
+import { useState, useEffect, setState, prevState} from 'react';
+
+
 
 export default function GameState() {
-   return <Container>
-    HI
-   </Container>
+   let [guess, setGuess] = useState(['guess 1:', 'guess 2:', 'guess 3:', 'guess 4:', 'guess 5:', 'guess 6:']);
+
+   return (
+       
+      <div>
+         <h1 >Guess!</h1>
+         <div className="fart" style={{display: 'flex', justifyContent: 'center'}}>
+         <Row className="mx-6 row row-cols-1">
+         <Card>{guess[0]}</Card>
+         <Card>{guess[1]}</Card>
+         <Card>{guess[2]}</Card>
+         <Card>{guess[3]}</Card>
+         <Card>{guess[4]}</Card>
+         <Card>{guess[5]}</Card>
+         </Row>
+         </div>
+      
+      </div>
+   )
    
 }
