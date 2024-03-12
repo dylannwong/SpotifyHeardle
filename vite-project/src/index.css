@@ -44,7 +44,7 @@ h1 {
   
 }
 
-button {
+.connect {
   color-scheme: black;
   border-radius: 8px;
   border: 1px solid transparent;
@@ -99,7 +99,33 @@ button:focus-visible {
   bottom: 10%;
   margin: 0;
   transform: translateX(-21%);
-  
+}
+.submit {
+  color-scheme: black;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1DB954;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  margin-left: 938%;
+  transform: translateY(300%);
+}
+.skip {
+  color-scheme: black;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1DB954;
+  cursor: pointer;
+  transform: translateY(200%);
+  margin-left: -350%;
 }
 
 @media (prefers-color-scheme: light) {

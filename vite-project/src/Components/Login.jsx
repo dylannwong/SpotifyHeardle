@@ -24,9 +24,9 @@ export default function Login() {
     };
 
 
-    return <div >
+    return <div>
     <Container>
-        <button onClick={handleClick}>Connect Spotify</button>
+        <button className="connect" onClick={handleClick}>Connect Spotify</button>
     </Container>
     </div>;
 

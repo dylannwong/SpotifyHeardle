@@ -37,14 +37,21 @@ export default function GameState({Id, name}) {
          </Row>
          
          </div>
-         <div className="play">
+         <div className="play" >
         {play? <BsFillPlayCircleFill onClick={() => handlePlay()}/> : <BsFillPauseCircleFill onClick={() => handlePause()}/>}
         </div>
-        <form>
+        
         <div className="searchb">
          <input style={{width: '450px'}}type='text' placeholder=""/>
         </div>
-        </form>
+        <div>
+         <button className="submit">
+            Submit
+         </button>
+         <button className="skip">
+            Skip
+         </button>
+         </div>
       </div>
    )
    
