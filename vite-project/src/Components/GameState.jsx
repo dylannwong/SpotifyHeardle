@@ -6,9 +6,12 @@ import {GoSkipFill} from 'react-icons/go'
 import {FaCheckCircle} from 'react-icons/fa'
 
 
-export default function GameState({Id, name}) {
+export default function GameState({Id, name, accessToken}) {
    let [guess, setGuess] = useState(['guess 1:', 'guess 2:', 'guess 3:', 'guess 4:', 'guess 5:', 'guess 6:']);
    let [play, setPlay] = useState(true);
+   const [answer, setAnswer] = useState("");
+   const [chosenSong, setSong] = useState("vibe");
+   let [tracks, setTracks] = useState([]);
 
    async function GetTracks() {
       //if too hard to get token, may have to fetch tracks in App then import array from there
@@ -16,10 +19,42 @@ export default function GameState({Id, name}) {
    }
    const handlePlay = () => {
      setPlay(false);
+   }
+
+   async function PlaySong() {
 
    }
+
+
+
+
    const handlePause = () => {
       setPlay(true);
+   }
+
+   async function Submit() {
+      
+      var searchParameters = {
+         headers: {
+           'Authorization': 'Bearer ' + accessToken
+         },
+           method: 'GET',
+           'Content-Type': 'application/json',
+           
+         }
+      await fetch(`https://api.spotify.com/v1/playlists/${Id}/tracks`, searchParameters)
+         .then(response => response.json())
+         .then(data => setTracks(tracks = data.items))
+
+      console.log(tracks[0].track.name);
+      setSong(tracks[0].track.name)
+
+      console.log(answer);
+      if (answer == chosenSong) {
+         console.log("you win!");
+      } else {
+         console.log("not it");
+      }
    }
 
    return (
@@ -41,11 +76,11 @@ export default function GameState({Id, name}) {
         {play? <BsFillPlayCircleFill onClick={() => handlePlay()}/> : <BsFillPauseCircleFill onClick={() => handlePause()}/>}
         </div>
         
-        <div className="searchb">
-         <input style={{width: '450px'}}type='text' placeholder=""/>
+        <div className="searchb" style={{display: 'flex'}}>
+         <FormControl onKeyPress={event => { (event.key=='Enter')? Submit():null }} onChange={event => {setAnswer(event.target.value);}} style={{width: '450px'}}type='text' placeholder=""/>
         </div>
         <div>
-         <button className="submit">
+         <button className="submit" onClick={Submit}>
             Submit
          </button>
          <button className="skip">

@@ -56,11 +56,10 @@ export default function App() {
       setChosen(chosenId=id);
       setChosenName(chosenName=name)
       
-       console.log(chosenId);
-       SetContent(Content='Game');
-      
-      
+      console.log(chosenId);
+      SetContent(Content='Game');
     };
+    
       
     return (
       <div className= "App" >
@@ -87,7 +86,7 @@ export default function App() {
                   </Card.Body>
                 </Card>
               )
-            }): <GameState Id={chosenId} name={chosenName}/> }
+            }): <GameState Id={chosenId} name={chosenName} accessToken={accessToken}/> }
           
           </Row>
           
