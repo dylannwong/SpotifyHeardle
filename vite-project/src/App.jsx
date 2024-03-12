@@ -4,9 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, InputGroup, FormControl, Button, Row, Card} from 'react-bootstrap';
 import { useState, useEffect, setState, prevState} from 'react';
 import Login from './Components/Login';
-import GameState from './Components/GameState.jsx';
-import DisplayPlaylists from './Components/DisplayPlaylists.jsx'
-import { start } from './Components/Start.jsx';
+import GameState from './Components/GameState';
+
 
 //const CLIENT_ID = "d2167329736c486689194fa6c967d6d1"; 
 //const CLIENT_SECRET = "64c50dfd98ad423db5ae935db07006b4";
@@ -15,9 +14,11 @@ import { start } from './Components/Start.jsx';
 export default function App() {
   const [accessToken, setAccessToken] = useState("");
   let [chosenId, setChosen] = useState("");
+  let [chosenName, setChosenName] = useState("");
   const [playlists, setPlaylist] = useState([]);
   let [isVisible, setIsVisible] = useState(true);
   let [Content, SetContent] = useState('playlist');
+  
     useEffect(() => {
       const hash = window.location.hash;
       if (hash) {
@@ -53,7 +54,8 @@ export default function App() {
     const handleClick = (name, id) => {
     
       console.log(`${name} clicked`);
-      setChosen(chosenId=id)
+      setChosen(chosenId=id);
+      setChosenName(chosenName=name)
       
        console.log(chosenId);
        SetContent(Content='Game');
@@ -86,7 +88,7 @@ export default function App() {
                   </Card.Body>
                 </Card>
               )
-            }): <GameState/> }
+            }): <GameState Id={chosenId} name={chosenName}/> }
           
           </Row>
           
@@ -95,4 +97,5 @@ export default function App() {
     </div>
 
   );
-}
+  }
+

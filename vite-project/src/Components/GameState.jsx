@@ -1,16 +1,16 @@
 import React from "react";
 import { Container, InputGroup, FormControl, Button, Row, Card} from 'react-bootstrap';
 import { useState, useEffect, setState, prevState} from 'react';
+import App from "../App";
 
 
-
-export default function GameState() {
+export default function GameState({Id, name}) {
    let [guess, setGuess] = useState(['guess 1:', 'guess 2:', 'guess 3:', 'guess 4:', 'guess 5:', 'guess 6:']);
-
+   
    return (
        
       <div>
-         <h1 >Guess!</h1>
+         <h1 >Guess! from {name}</h1>
          <div className="fart" style={{display: 'flex', justifyContent: 'center'}}>
          <Row className="mx-6 row row-cols-1">
          <Card>{guess[0]}</Card>
