@@ -73,12 +73,33 @@ button:focus-visible {
 }
 
 .fart {
-  margin: 0% auto;
+  margin-bottom: 300%;
   border-radius: 6px;
   padding: 15px;
   width: 300px;
   text-align: left;
 
+}
+.play {
+  
+  font-size: 3.2em;
+  color: #f9f9f9;
+  cursor: pointer;
+  position: absolute;
+  bottom: 15%;
+  margin: 0;
+  transform: translateX(230%);
+
+}
+.searchb {
+  color: white;
+  width: 50%;
+  background-color: #1DB954;
+  position: absolute;
+  bottom: 10%;
+  margin: 0;
+  transform: translateX(-21%);
+  
 }
 
 @media (prefers-color-scheme: light) {

@@ -6,7 +6,6 @@ import { useState, useEffect, setState, prevState} from 'react';
 import Login from './Components/Login';
 import GameState from './Components/GameState';
 
-
 //const CLIENT_ID = "d2167329736c486689194fa6c967d6d1"; 
 //const CLIENT_SECRET = "64c50dfd98ad423db5ae935db07006b4";
 
