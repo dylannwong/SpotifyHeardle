@@ -66,7 +66,7 @@ export default function App() {
       
        <Container>
           
-          {accessToken ? isVisible && (<Button onClick={start}>Pick From Playlsits</Button>) :< Login />}
+          {accessToken ? isVisible && (<Button onClick={start}>Pick From Playlists</Button>) :< Login />}
           
           
         <Container>

@@ -14,23 +14,38 @@ export default function GameState({Id, name, accessToken}) {
    const [chosenSong, setSong] = useState("vibe");
    let [tracks, setTracks] = useState([]);
 
+
+   
+   //player.connect();
+    
+
+
+
    async function GetTracks() {
       //if too hard to get token, may have to fetch tracks in App then import array from there
 
    }
+
+   async function PlaySong(type) {
+      var searchParameters = {
+         headers: {
+           'Authorization': 'Bearer ' + accessToken
+         },
+           method: 'PUT',
+           context_uri: "spotify:album:5ht7ItJgpBH7W6vJ5BqpPr"
+         }
+         await fetch (`https://api.spotify.com/v1/me/player/${type}`, searchParameters);
+   }
+
    const handlePlay = () => {
-     setPlay(false);
-   }
-
-   async function PlaySong() {
-
-   }
-
-
+      setPlay(false);
+      PlaySong('play');
+    }
 
 
    const handlePause = () => {
       setPlay(true);
+      PlaySong('pause');
    }
 
    async function Submit() {
@@ -52,8 +67,11 @@ export default function GameState({Id, name, accessToken}) {
       
       console.log(answer);
          //keeps track of guesses and displays them.
+         //fix blank answer
+      if((answer !== "")|| (answer !== " ")){
       guess[guessCount] = guess[guessCount] + answer;
       setGuessCount(guessCount+1);
+      }
       if (answer == chosenSong) {
          console.log("you win!");
       } else {
@@ -64,7 +82,7 @@ export default function GameState({Id, name, accessToken}) {
    return (
        
       <div>
-         <h1 >Guess from {name}</h1>
+         <h1 src={"https://sdk.scdn.co/spotify-player.js"}>Guess from {name}</h1>
          <div className="fart" style={{display: 'flex', justifyContent: 'center'}}>
          <Row className="mx-6 row row-cols-1">
          <Card>{guess[0]}</Card>
