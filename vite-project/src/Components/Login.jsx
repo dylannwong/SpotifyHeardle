@@ -16,6 +16,7 @@ export default function Login() {
             "playlist-read-collaborative",
             "app-remote-control",
             "streaming",
+            "app-remote-control",
             "user-read-playback-position",
             "user-top-read",
             "user-read-recently-played"
