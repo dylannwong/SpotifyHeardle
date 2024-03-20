@@ -1,8 +1,11 @@
+export default function SDK({accessToken}) {
+<div>
+<h1>Spotify Web Playback SDK Quick Start</h1>
+    <button id="togglePlay" onClick={player.togglePlay()}>Toggle Play</button>
 
-<script src="https://sdk.scdn.co/spotify-player.js"></script>
-
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+</div>
 window.onSpotifyWebPlaybackSDKReady = () => {
-    const token = '[My access token]';
     const player = new Spotify.Player({
       name: 'Web Playback SDK Quick Start Player',
       getOAuthToken: cb => { cb(accessToken); },
@@ -31,3 +34,6 @@ player.addListener('authentication_error', ({ message }) => {
 player.addListener('account_error', ({ message }) => {
   console.error(message);
 });
+
+player.connect();
+}

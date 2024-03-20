@@ -4,7 +4,7 @@ import { useState, useEffect, setState, prevState} from 'react';
 import {BsFillPlayCircleFill, BsFillPauseCircleFill, BsSearch} from 'react-icons/bs';
 import {GoSkipFill} from 'react-icons/go'
 import {FaCheckCircle} from 'react-icons/fa'
-
+import SDK from "./SDK";
 
 export default function GameState({Id, name, accessToken}) {
    let [guess, setGuess] = useState(['guess 1: ', 'guess 2: ', 'guess 3: ', 'guess 4: ', 'guess 5: ', 'guess 6: ']);
@@ -13,7 +13,8 @@ export default function GameState({Id, name, accessToken}) {
    const [answer, setAnswer] = useState("");
    const [chosenSong, setSong] = useState("vibe");
    let [tracks, setTracks] = useState([]);
-
+   const [sdk , SetSdk] = useState(true);
+   
 
    
    //player.connect();
@@ -79,10 +80,10 @@ export default function GameState({Id, name, accessToken}) {
       }
    }
 
-   return (
+   if(sdk!=true) {return (
        
       <div>
-         <h1 src={"https://sdk.scdn.co/spotify-player.js"}>Guess from {name}</h1>
+         <h1>Guess from {name}</h1>
          <div className="fart" style={{display: 'flex', justifyContent: 'center'}}>
          <Row className="mx-6 row row-cols-1">
          <Card>{guess[0]}</Card>
@@ -92,7 +93,7 @@ export default function GameState({Id, name, accessToken}) {
          <Card>{guess[4]}</Card>
          <Card>{guess[5]}</Card>
          </Row>
-         
+  
          </div>
          <div className="play" >
         {play? <BsFillPlayCircleFill onClick={() => handlePlay()}/> : <BsFillPauseCircleFill onClick={() => handlePause()}/>}
@@ -110,6 +111,9 @@ export default function GameState({Id, name, accessToken}) {
          </button>
          </div>
       </div>
-   )
+   )}
+   else {
+      return <SDK accessToken={accessToken}/>
+   }
    
 }
