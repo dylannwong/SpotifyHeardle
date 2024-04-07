@@ -80,6 +80,15 @@ button:focus-visible {
   text-align: left;
 
 }
+
+.inactive {
+  color: #1DB954;
+  background-color: #2a2929;
+  border-radius: 10px;
+  width: 200px;
+  align-items: center;
+  position: absolute;
+}
 .play {
   
   font-size: 3.2em;

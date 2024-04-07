@@ -6,6 +6,7 @@ import { useState, useEffect, setState, prevState} from 'react';
 import Login from './Components/Login';
 import GameState from './Components/GameState';
 
+
 //const CLIENT_ID = "d2167329736c486689194fa6c967d6d1"; 
 //const CLIENT_SECRET = "64c50dfd98ad423db5ae935db07006b4";
 
@@ -14,6 +15,7 @@ export default function App() {
   const [accessToken, setAccessToken] = useState("");
   let [chosenId, setChosen] = useState("");
   let [chosenName, setChosenName] = useState("");
+  let [chosenUri, setURI] = useState("");
   const [playlists, setPlaylist] = useState([]);
   let [isVisible, setIsVisible] = useState(true);
   let [Content, SetContent] = useState('playlist');
@@ -50,9 +52,10 @@ export default function App() {
         //.then(data => { return data.artist.items[0].id })
   
     }
-    const handleClick = (name, id) => {
+    const handleClick = (name, id, uri) => {
     
       console.log(`${name} clicked`);
+      setURI(chosenUri=uri);
       setChosen(chosenId=id);
       setChosenName(chosenName=name)
       
@@ -79,14 +82,14 @@ export default function App() {
               
               return (
                 
-                <Card className='chover' onClick={() => handleClick(album.name, album.id)} >
+                <Card className='chover' onClick={() => handleClick(album.name, album.id, album.uri)} >
                   <Card.Img src={album.images[0].url} />
                   <Card.Body>
                     <Card.Title>{album.name}</Card.Title>
                   </Card.Body>
                 </Card>
               )
-            }): <GameState Id={chosenId} name={chosenName} accessToken={accessToken}/> }
+            }): <GameState Id={chosenId} name={chosenName} play_uri={chosenUri} accessToken={accessToken}/> }
           
           </Row>
           
