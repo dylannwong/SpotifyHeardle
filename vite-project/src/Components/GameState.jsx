@@ -136,6 +136,7 @@ export default function GameState({Id, name, play_uri, accessToken}) {
           }),
        }
          await fetch (`https://api.spotify.com/v1/me/player/play?device_id=${d_id}`, searchParameters).then((data) => console.log(data));
+         //await fetch (`https://api.spotify.com/v1/me/player/pause?device_id=${d_id}`, searchParameters).then((data) => console.log(data));
       
          console.log('ID: ' + d_id + ' URI' + play_uri);
       };
@@ -154,16 +155,20 @@ export default function GameState({Id, name, play_uri, accessToken}) {
             console.log('shuff');
          };
 
-   const handle_pause = () => {
-      
+   const handle_play = () => {
+      player.togglePlay();
       setTimeout(function() {
-
-         player.seek(0)
-         console.log('Changed position!')
-         player.togglePlay()}, 3000);
-      
+         
+         player.seek(0);
+         player.pause();
+         }, 8000);
       
       console.log("click");
+   }
+
+   const handle_pause = () => {
+      player.togglePlay();
+      player.seek(0);
    }
 
    if (!is_active) { 
@@ -180,7 +185,7 @@ export default function GameState({Id, name, play_uri, accessToken}) {
       ShufflePlaylist();
       PlayPlaylist(play_uri);
       setNum(num = num + 1);
-      player.pause();
+      
       }
       
    return (
@@ -202,8 +207,8 @@ export default function GameState({Id, name, play_uri, accessToken}) {
          <div>
             <ProgressBar>bar</ProgressBar>
          </div>
-            <div className="play" onClick={() => handle_pause()} >
-                    { is_paused ? <BsFillPlayCircleFill/> : <BsFillPauseCircleFill/> }
+            <div className="play" >
+                    { is_paused ? <BsFillPlayCircleFill onClick={() => handle_play()}/> : <BsFillPauseCircleFill onClick={() => handle_pause()}/> }
              </div>
         
         <div className="searchb" style={{display: 'flex'}}>
