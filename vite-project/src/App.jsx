@@ -47,8 +47,7 @@ export default function App() {
       //await fetch('https://api.spotify.com/v1/users/tylerhalili29/playlists', searchParameters)
       await fetch('https://api.spotify.com/v1/me/playlists', searchParameters)
         .then(response => response.json())
-        .then(data => { setPlaylist(data.items);
-        })
+        .then(data => { setPlaylist(data.items);})
         //.then(data => { return data.artist.items[0].id })
   
     }

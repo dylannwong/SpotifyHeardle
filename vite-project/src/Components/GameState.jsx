@@ -31,8 +31,10 @@ export default function GameState({Id, name, play_uri, accessToken}) {
    let [is_active, setActive] = useState(false);
    const [player, setPlayer] = useState(undefined);
    const [current_track, setTrack] = useState(track);
-   let [d_id, setDID] = useState("")
-   let [num, setNum] = useState(0)
+   let [d_id, setDID] = useState("");
+   let [num, setNum] = useState(0);
+   let [stat, setStat] = useState("502");
+   
 
    
  
@@ -135,10 +137,11 @@ export default function GameState({Id, name, play_uri, accessToken}) {
             'Authorization': 'Bearer ' + accessToken
           }),
        }
-         await fetch (`https://api.spotify.com/v1/me/player/play?device_id=${d_id}`, searchParameters).then((data) => console.log(data));
-         //await fetch (`https://api.spotify.com/v1/me/player/pause?device_id=${d_id}`, searchParameters).then((data) => console.log(data));
-      
-         console.log('ID: ' + d_id + ' URI' + play_uri);
+         await fetch (`https://api.spotify.com/v1/me/player/play?device_id=${d_id}`, searchParameters)
+         .then(data => { setStat(stat=JSON.stringify(data.status)) });
+
+            console.log(stat);
+            console.log('ID: ' + d_id + ' URI' + play_uri);
       };
 
       const ShufflePlaylist = async () => {
@@ -181,15 +184,16 @@ export default function GameState({Id, name, play_uri, accessToken}) {
               </div>
           </>)
   } else {
-   while(num < 5) {
+   while(stat === "502") {
       ShufflePlaylist();
       PlayPlaylist(play_uri);
       setNum(num = num + 1);
-      
+      console.log(stat);
+      if(num == 10){console.log("done");}}
       }
       
    return (
-   
+
       <div>
          
          <h1>Guess from {name}</h1>
@@ -224,4 +228,3 @@ export default function GameState({Id, name, play_uri, accessToken}) {
          </div>
       </div>
    )}
-}
