@@ -16,7 +16,7 @@ import { TextField } from "@mui/material";
 //import SDK from "./SDK";
 
 
-export default function GameState({songs, track, is_active, is_paused, player, Id, name, play_uri, accessToken}) {
+export default function GameState({cont, songs, track, is_active, is_paused, player, Id, name, play_uri, accessToken}) {
    let [guess, setGuess] = useState(['guess 1: ', 'guess 2: ', 'guess 3: ', 'guess 4: ', 'guess 5: ', 'guess 6: ']);
    let [guessCount, setGuessCount] = useState(0)
    let [skipCount, setSkipCount] = useState(1000)
@@ -110,10 +110,10 @@ export default function GameState({songs, track, is_active, is_paused, player, I
               </div>
           </>)
   }
-if(gState === 'win'){
-   return (<Win/>);
-} else if(gState === 'lose'){
-   return (<Lose/>);
+if(gState === 'win'  && cont != 'game'){
+   return (<Win songs={songs} track={track} is_active={is_active} is_paused={is_paused} player={player} Id={Id} name={name} play_uri={play_uri} accessToken={accessToken}/>);
+} else if(gState === 'lose' && cont != 'game'){
+   return (<Lose songs={songs} track={track} is_active={is_active} is_paused={is_paused} player={player} Id={Id} name={name} play_uri={play_uri} accessToken={accessToken}/>);
 } else {
    return (
    
@@ -137,8 +137,10 @@ if(gState === 'win'){
             <div className="play" >
                     { is_paused ? <BsFillPlayCircleFill onClick={() => handle_play()}/> : <BsFillPauseCircleFill/> }
              </div>
-             <div>
-      <Autocomplete
+            
+  
+        <div className="searchb" style={{display: 'flex'}}>
+        <Autocomplete
         value={value}
         onChange={(event, newValue) => {
           setValue(newValue);
@@ -149,15 +151,10 @@ if(gState === 'win'){
           setInputValue(newInputValue);
           setAnswer(newInputValue);
          }}
-        id="controllable-states-demo"
         options={songs}
-        sx={{ width: 300 }}
+        sx={{ width: 450 }}
         renderInput={(params) => <TextField {...params} label="Song" />}
       />
-    </div>
-  
-        <div className="searchb" style={{display: 'flex'}}>
-         <FormControl onKeyPress={event => { (event.key=='Enter')? Submit():null }} onChange={event => {setAnswer(event.target.value);}} style={{width: '450px'}}type='text' placeholder=""/>
         </div>
         <div>
          <button className="submit" onClick={Submit}>

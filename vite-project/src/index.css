@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #6d6d6d;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -21,9 +21,11 @@ a {
 a:hover {
   color: #535bf2;
 }
-
+.win {
+  color: #1DB954;
+}
 body {
-  background-color: #1a1a1a;
+  background-color: #000000a9;
   margin: 0;
   display: flex;
   place-items: center;
@@ -108,6 +110,23 @@ button:focus-visible {
   margin: 0;
   transform: translateX(-10.5%);
 }
+
+
+
+
+.MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+  border-color: #ffffff; /* Example color for the default state */
+}
+
+
+
+/* Style the dropdown list items */
+.MuiAutocomplete-listbox .MuiAutocomplete-option {
+  color: #000000; /* Example color */
+}
+
+
+
 .submit {
   color-scheme: black;
   border-radius: 8px;

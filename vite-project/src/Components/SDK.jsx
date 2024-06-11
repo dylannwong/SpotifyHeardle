@@ -92,7 +92,13 @@ async function start() {
       'Content-Type': 'application/json',
       
     }
-  
+
+    
+
+
+    //await fetch (`https://api.spotify.com/v1/me/player/shuffle?state=true`, sParameters).then((data) => console.log(data))
+
+
 
   //await fetch('https://api.spotify.com/v1/users/tylerhalili29/playlists', searchParameters)
   await fetch('https://api.spotify.com/v1/me/playlists', searchParameters)
@@ -135,13 +141,24 @@ const handleClick = async (name, id, uri) => {
  await fetch(`https://api.spotify.com/v1/playlists/${chosenId}/tracks`, sParameters)
     .then(response => response.json())
     .then(data => setTracks(tracks = data.items))
-  console.log(tracks)
 
   await fetch(`https://api.spotify.com/v1/playlists/${chosenId}/tracks?offset=100`, sParameters)
     .then(response => response.json())
     .then(data => setTracks(tracks = tracks.concat(data.items)))
-  console.log(tracks)
+
+  await fetch(`https://api.spotify.com/v1/playlists/${chosenId}/tracks?offset=200`, sParameters)
+    .then(response => response.json())
+    .then(data => setTracks(tracks = tracks.concat(data.items)))
+
+  await fetch(`https://api.spotify.com/v1/playlists/${chosenId}/tracks?offset=300`, sParameters)
+    .then(response => response.json())
+    .then(data => setTracks(tracks = tracks.concat(data.items)))
+
+
+  console.log(tracks);
   setSongs(songs = tracks.map(gTrack));
+  
+  await fetch (`https://api.spotify.com/v1/me/player/shuffle?state=true&device_id=${d_id}`, searchParameters).then((data) => console.log(data));
 
   await fetch (`https://api.spotify.com/v1/me/player/play?device_id=${d_id}`, searchParameters).then((data) => console.log(data))
   setTimeout(function() {
@@ -165,7 +182,7 @@ if (!is_active) {
 return (
 <>
   <div className="container">
-      <div className="main-wrapper">
+      <div className="inactive">
           <b> Instance not active. Transfer your playback using your Spotify app </b>
       </div>
   </div>
