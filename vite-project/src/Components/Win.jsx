@@ -1,10 +1,19 @@
 import GameState from "./GameState";
 import SDK from "./SDK";
 import React, { useState, useEffect } from 'react';
-export default function Win({songs, track, is_active, is_paused, player, Id, name, play_uri, accessToken}) {
+import { Spotify } from "react-spotify-embed";
+export default function Win({chosen_uri, songs, track, is_active, is_paused, player, Id, name, play_uri, accessToken}) {
 
 let [Content, SetContent] = useState('');
+let [uri, Seturi] = useState('');
 
+
+useEffect(() => {
+    Seturi(uri=chosen_uri);
+    Seturi(uri=uri.substring(14));
+
+    console.log(uri);
+}, [])
 const handle_same = () => {
     console.log(Content);
     SetContent(Content='retry');
@@ -27,12 +36,21 @@ if(Content=='retry'){
     return(<SDK accessToken={accessToken}/>);
 }
 return(
-<div className="win">
+<div>
 <h1>You Win!</h1>
-<div className="Winbuttons">
-    <button onClick={() => {handle_same()}}>Same Playlist</button>
+<div className="spot">
 
-    <button onClick={() => {handle_diff()}}>New Playlist</button>
+<Spotify wide link= {`https://open.spotify.com/track/${uri}`}/>
+
+</div>
+<div >
+    <button Classname="submit"  onClick={() => {handle_same()}}>
+        Same Playlist
+        </button>
+
+    <button Classname="Winbuttons"  onClick={() => {handle_diff()}}>
+        New Playlist 
+        </button>
 </div>
 
 </div>

@@ -146,15 +146,6 @@ const handleClick = async (name, id, uri) => {
     .then(response => response.json())
     .then(data => setTracks(tracks = tracks.concat(data.items)))
 
-  await fetch(`https://api.spotify.com/v1/playlists/${chosenId}/tracks?offset=200`, sParameters)
-    .then(response => response.json())
-    .then(data => setTracks(tracks = tracks.concat(data.items)))
-
-  await fetch(`https://api.spotify.com/v1/playlists/${chosenId}/tracks?offset=300`, sParameters)
-    .then(response => response.json())
-    .then(data => setTracks(tracks = tracks.concat(data.items)))
-
-
   console.log(tracks);
   setSongs(songs = tracks.map(gTrack));
   

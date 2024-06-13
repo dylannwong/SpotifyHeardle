@@ -24,6 +24,11 @@ a:hover {
 .win {
   color: #1DB954;
 }
+.Winbuttons{
+    width: 200px;
+    margin: 0 auto;
+    display: inline;
+}
 body {
   background-color: #000000a9;
   margin: 0;
@@ -45,7 +50,9 @@ h1 {
   color: #f9f9f9;
   
 }
-
+.spot{
+  width: 450px
+}
 .connect {
   color-scheme: black;
   border-radius: 8px;

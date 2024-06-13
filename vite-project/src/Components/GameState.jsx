@@ -23,7 +23,7 @@ export default function GameState({cont, songs, track, is_active, is_paused, pla
    const [answer, setAnswer] = useState("");
    let [chosenSong, setSong] = useState("");
    let [gState, setgState] = useState(""); 
-   
+   let [chosen_uri, Seturi] = useState('');
 
    const [value, setValue] = useState(songs[0]);
    const [inputValue, setInputValue] = useState('');
@@ -98,7 +98,18 @@ export default function GameState({cont, songs, track, is_active, is_paused, pla
             player.seek(0);
          }
 
-   
+         player.getCurrentState().then(state => {
+            if (!state) {
+              console.error('User is not playing music through the Web Playback SDK');
+              return;
+            }
+          
+            var current_track = state.track_window.current_track;
+            var next_track = state.track_window.next_tracks[0];
+            Seturi(chosen_uri=current_track.uri);
+            
+            
+          });
 
    if (!is_active) { 
       return (
@@ -111,7 +122,7 @@ export default function GameState({cont, songs, track, is_active, is_paused, pla
           </>)
   }
 if(gState === 'win'  && cont != 'game'){
-   return (<Win songs={songs} track={track} is_active={is_active} is_paused={is_paused} player={player} Id={Id} name={name} play_uri={play_uri} accessToken={accessToken}/>);
+   return (<Win chosen_uri={chosen_uri} songs={songs} track={track} is_active={is_active} is_paused={is_paused} player={player} Id={Id} name={name} play_uri={play_uri} accessToken={accessToken}/>);
 } else if(gState === 'lose' && cont != 'game'){
    return (<Lose songs={songs} track={track} is_active={is_active} is_paused={is_paused} player={player} Id={Id} name={name} play_uri={play_uri} accessToken={accessToken}/>);
 } else {
@@ -129,7 +140,7 @@ if(gState === 'win'  && cont != 'game'){
          <Card>{guess[4]}</Card>
          <Card>{guess[5]}</Card>
          </Row>
-  
+
          </div>
          <div>
             <ProgressBar>bar</ProgressBar>
