@@ -19,7 +19,7 @@ export default function SDK({accessToken}) {
   const [is_active, setActive] = useState(false);
   const [player, setPlayer] = useState(undefined);
   const [current_track, setTrack] = useState(track);
-
+  let [totalTracks, setTotal] = useState(0);
   let [isVisible, setIsVisible] = useState(true);
   let [Content, SetContent] = useState('playlist');
   let [chosenId, setChosen] = useState("");
@@ -137,14 +137,17 @@ const handleClick = async (name, id, uri) => {
       'Content-Type': 'application/json',
       
     }
-
  await fetch(`https://api.spotify.com/v1/playlists/${chosenId}/tracks`, sParameters)
+    .then(response => response.json())
+    .then(data => setTotal(totalTracks=(data.total)))
+
+ await fetch(`https://api.spotify.com/v1/playlists/${chosenId}/tracks?limit=${totalTracks}`, sParameters)
     .then(response => response.json())
     .then(data => setTracks(tracks = data.items))
 
-  await fetch(`https://api.spotify.com/v1/playlists/${chosenId}/tracks?offset=100`, sParameters)
-    .then(response => response.json())
-    .then(data => setTracks(tracks = tracks.concat(data.items)))
+  //await fetch(`https://api.spotify.com/v1/playlists/${chosenId}/tracks?offset=100`, sParameters)
+  //  .then(response => response.json())
+  //  .then(data => setTracks(tracks = tracks.concat(data.items)))
 
   console.log(tracks);
   setSongs(songs = tracks.map(gTrack));

@@ -104,18 +104,15 @@ button:focus-visible {
   color: #f9f9f9;
   cursor: pointer;
   position: absolute;
-  bottom: 17%;
+  bottom: 27%;
   margin: 0;
   transform: translateX(230%);
 
 }
-.searchb {
-  color: white;
-  width: 50%;
-  position: absolute;
-  bottom: 10%;
-  margin: 0;
-  transform: translateX(-10.5%);
+.s {
+  transform: translateY(150%);
+  width: 700%;
+  margin-left: -75%;
 }
 
 
@@ -145,8 +142,8 @@ button:focus-visible {
   background-color: #1DB954;
   cursor: pointer;
   transition: border-color 0.25s;
-  margin-left: 938%;
-  transform: translateY(300%);
+  margin-left: 500%;
+  transform: translateY(270%);
 }
 .skip {
   color-scheme: black;
@@ -158,8 +155,8 @@ button:focus-visible {
   font-family: inherit;
   background-color: #1DB954;
   cursor: pointer;
-  transform: translateY(200%);
-  margin-left: -350%;
+  transform: translateY(170%);
+  margin-left: -200%;
 }
 
 @media (prefers-color-scheme: light) {

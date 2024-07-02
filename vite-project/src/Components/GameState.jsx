@@ -142,15 +142,12 @@ if(gState === 'win'  && cont != 'game'){
          </Row>
 
          </div>
-         <div>
-            <ProgressBar>bar</ProgressBar>
-         </div>
             <div className="play" >
                     { is_paused ? <BsFillPlayCircleFill onClick={() => handle_play()}/> : <BsFillPauseCircleFill/> }
              </div>
             
   
-        <div className="searchb" style={{display: 'flex'}}>
+        <div className="s" style={{display: 'flex'}}>
         <Autocomplete
         value={value}
         onChange={(event, newValue) => {
