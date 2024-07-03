@@ -122,17 +122,17 @@ export default function GameState({cont, songs, track, is_active, is_paused, pla
           </>)
   }
 if(gState === 'win'  && cont != 'game'){
-   return (<Win chosen_uri={chosen_uri} songs={songs} track={track} is_active={is_active} is_paused={is_paused} player={player} Id={Id} name={name} play_uri={play_uri} accessToken={accessToken}/>);
+   return (<Win guessCount={guessCount} chosen_uri={chosen_uri} songs={songs} track={track} is_active={is_active} is_paused={is_paused} player={player} Id={Id} name={name} play_uri={play_uri} accessToken={accessToken}/>);
 } else if(gState === 'lose' && cont != 'game'){
-   return (<Lose songs={songs} track={track} is_active={is_active} is_paused={is_paused} player={player} Id={Id} name={name} play_uri={play_uri} accessToken={accessToken}/>);
+   return (<Lose chosen_uri={chosen_uri} songs={songs} track={track} is_active={is_active} is_paused={is_paused} player={player} Id={Id} name={name} play_uri={play_uri} accessToken={accessToken}/>);
 } else {
    return (
    
-      <div>
+      <div className="gamer">
          
          <h1>Guess from {name}</h1>
-         <div className="fart" style={{display: 'flex', justifyContent: 'center'}}>
-         <Row className="mx-6 row row-cols-1">
+         <div className="fart">
+         <Row style={{display: "flex"}}>
          <Card>{guess[0]}</Card>
          <Card>{guess[1]}</Card>
          <Card>{guess[2]}</Card>

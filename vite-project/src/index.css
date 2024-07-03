@@ -51,7 +51,11 @@ h1 {
   
 }
 .spot{
+  margin-left: -11%;
+  position: absolute;
+  top: 150px;
   width: 450px
+  
 }
 .connect {
   color-scheme: black;
@@ -80,14 +84,36 @@ button:focus-visible {
 .chover {
   cursor: pointer;
 }
+.Winmsg{
+  color: rgb(255, 255, 255);
+  background-color: #000000;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  display: inline-flex;
 
+}
+.playagain{
+  color-scheme: black;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1DB954;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  margin-left: 500%;
+  transform: translateY(320%);
+}
 .fart {
-  margin-bottom: 90%;
+  margin-bottom: -60%;
   border-radius: 6px;
   padding: 15px;
   width: 300px;
   text-align: left;
-
+  margin-left: 145%;
 }
 
 .inactive {
@@ -103,16 +129,15 @@ button:focus-visible {
   font-size: 3.2em;
   color: #f9f9f9;
   cursor: pointer;
-  position: absolute;
-  bottom: 27%;
-  margin: 0;
-  transform: translateX(230%);
+  
+  margin-left: 358%;
+  transform: translateY(45%);
 
 }
 .s {
-  transform: translateY(150%);
+  transform: translateY(140%);
   width: 700%;
-  margin-left: -75%;
+  margin-left: 59%;
 }
 
 
@@ -142,7 +167,7 @@ button:focus-visible {
   background-color: #1DB954;
   cursor: pointer;
   transition: border-color 0.25s;
-  margin-left: 500%;
+  margin-left: 660%;
   transform: translateY(270%);
 }
 .skip {
@@ -156,7 +181,7 @@ button:focus-visible {
   background-color: #1DB954;
   cursor: pointer;
   transform: translateY(170%);
-  margin-left: -200%;
+  margin-left: -0%;
 }
 
 @media (prefers-color-scheme: light) {
