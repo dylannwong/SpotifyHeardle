@@ -2,7 +2,8 @@ import GameState from "./GameState";
 import SDK from "./SDK";
 import React, { useState, useEffect } from 'react';
 import { Spotify } from "react-spotify-embed";
-export default function Lose({chosen_uri, songs, track, is_active, is_paused, player, Id, name, play_uri, accessToken}) {
+import {Container} from 'react-bootstrap';
+export default function Lose({ chosen_uri, songs, track, is_active, is_paused, player, Id, name, play_uri, accessToken}) {
 
 let [Content, SetContent] = useState('');
 let [uri, Seturi] = useState('');
@@ -25,10 +26,6 @@ const handle_same = () => {
         }, 1000);
 }
 
-const handle_diff = () => {
-    console.log(Content);
-    SetContent(Content='diff');
-}
 
 if(Content=='retry'){
     return(<GameState songs={songs} track={track} is_active={is_active} is_paused={is_paused} player={player} Id={Id} name={name} play_uri={play_uri} accessToken={accessToken}/>);
@@ -38,16 +35,24 @@ if(Content=='retry'){
 return(
 <div>
 <h1>You Lose!</h1>
+
+<div >
+<Container>
+    <button className="playagain"  onClick={() => {handle_same()}}>
+        Play Again
+        </button>
+</Container>
+
 <div className="spot">
 
 <Spotify wide link= {`https://open.spotify.com/track/${uri}`}/>
 
 </div>
-<div >
-    <button Classname="submit"  onClick={() => {handle_same()}}>
-        Same Playlist
-        </button>
+
 </div>
+<div className="Winmsg">Better luck next time!
+</div>
+
 
 </div>
 
