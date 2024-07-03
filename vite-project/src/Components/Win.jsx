@@ -54,7 +54,7 @@ return(
 </div>
 
 </div>
-<div className="Winmsg">Nice Work! You got it in {guessCount} guesses!
+<div className="Winmsg">Nice Work! You got it in {guessCount} guess(es)!
 </div>
 
 

@@ -147,7 +147,7 @@ if(gState === 'win'  && cont != 'game'){
              </div>
             
   
-        <div className="s" style={{display: 'flex'}}>
+        <div className="s" style={{display: 'relative'}}>
         <Autocomplete
         value={value}
         onChange={(event, newValue) => {
