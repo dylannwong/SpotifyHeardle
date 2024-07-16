@@ -83,7 +83,7 @@ player.connect();
 async function start() {
   setIsVisible(false);
   console.log("Getting Playlists ");
-  // Get request using search to get the Artist ID
+  
   var searchParameters = {
     headers: {
       'Authorization': 'Bearer ' + accessToken
@@ -94,17 +94,10 @@ async function start() {
     }
 
     
-
-
-    //await fetch (`https://api.spotify.com/v1/me/player/shuffle?state=true`, sParameters).then((data) => console.log(data))
-
-
-
-  //await fetch('https://api.spotify.com/v1/users/tylerhalili29/playlists', searchParameters)
   await fetch('https://api.spotify.com/v1/me/playlists', searchParameters)
     .then(response => response.json())
     .then(data => { setPlaylist(data.items);})
-    //.then(data => { return data.artist.items[0].id })
+  
 
 }
 
@@ -145,9 +138,6 @@ const handleClick = async (name, id, uri) => {
     .then(response => response.json())
     .then(data => setTracks(tracks = data.items))
 
-  //await fetch(`https://api.spotify.com/v1/playlists/${chosenId}/tracks?offset=100`, sParameters)
-  //  .then(response => response.json())
-  //  .then(data => setTracks(tracks = tracks.concat(data.items)))
 
   console.log(tracks);
   setSongs(songs = tracks.map(gTrack));

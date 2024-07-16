@@ -2,13 +2,8 @@ import React from "react";
 import { Container, InputGroup, FormControl, Button, Row, Card, ProgressBar} from 'react-bootstrap';
 import { useState, useEffect, setState, prevState} from 'react';
 import {BsFillPlayCircleFill, BsFillPauseCircleFill, BsSearch} from 'react-icons/bs';
-import {GoSkipFill} from 'react-icons/go'
-import {FaCheckCircle} from 'react-icons/fa'
-import App from "../App";
 import Win from "./Win";
 import Lose from "./Lose";
-import SDK from "./SDK";
-import TextInput from 'react-autocomplete-input';
 import 'react-autocomplete-input/dist/bundle.css';
 import { Autocomplete } from "@mui/material";
 import { TextField } from "@mui/material";
@@ -131,7 +126,7 @@ if(gState === 'win'  && cont != 'game'){
       <div className="gamer">
          
          <h1>Guess from {name}</h1>
-         <div className="fart">
+         <div className="f">
          <Row style={{display: "flex"}}>
          <Card>{guess[0]}</Card>
          <Card>{guess[1]}</Card>
